@@ -1,0 +1,17 @@
+.col-md-3
+  %h2 New Item
+  - if item.errors.messages.any?
+    - item.errors.messages.each do |field,message|
+      = field.to_s.humanize + ': ' + message.join(', ')
+      %br
+  = form_for item do |f|
+    .form-group
+      = f.label :item_type_id
+      %br
+      = f.select :item_type_id, options_for_select(ItemType.all.collect { |item_type| [item_type.name, item_type.id]}), {}, class: 'form-control'
+    .form-group
+      = f.label :name
+      %br
+      = f.text_field :name, class: 'form-control'
+    %br
+    = f.submit 'Create item', class: 'btn btn-primary'
