@@ -1,5 +1,5 @@
 .container
-  %h3 Incompleted items
+  %h3 Incompleted Items
   %table.table.table-striped
     - incomplete_items.each do |item|
       %tr
@@ -9,7 +9,7 @@
           = link_to("Complete", complete_item_path(item), method: :post, class: 'btn btn-success btn-sm')
           = link_to("Delete", { action: :destroy, id: item.id }, method: :delete, class: 'btn btn-danger btn-sm')
 .container
-  %h3 Completed items
+  %h3 Completed Items
   %table.table.table-striped#completed-table
     %tr
       %th Type
